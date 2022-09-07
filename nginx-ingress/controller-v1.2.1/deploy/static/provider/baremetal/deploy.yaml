@@ -373,6 +373,15 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app.avikus.ai/tier
+            operator: In
+            values:
+            - web
   minReadySeconds: 0
   revisionHistoryLimit: 10
   selector:
@@ -485,6 +494,15 @@ metadata:
   name: ingress-nginx-admission-create
   namespace: ingress-nginx
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app.avikus.ai/tier
+            operator: In
+            values:
+            - web
   template:
     metadata:
       labels:
@@ -532,6 +550,15 @@ metadata:
   name: ingress-nginx-admission-patch
   namespace: ingress-nginx
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app.avikus.ai/tier
+            operator: In
+            values:
+            - web
   template:
     metadata:
       labels:
