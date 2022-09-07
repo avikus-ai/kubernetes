@@ -388,6 +388,15 @@ spec:
         app.kubernetes.io/name: ingress-nginx
     spec:
       hostNetwork: true
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app.avikus.ai/tier
+                operator: In
+                values:
+                - web
       containers:
       - args:
         - /nginx-ingress-controller
@@ -495,6 +504,15 @@ spec:
         app.kubernetes.io/version: 1.2.1
       name: ingress-nginx-admission-create
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app.avikus.ai/tier
+                operator: In
+                values:
+                - web
       containers:
       - args:
         - create
@@ -542,6 +560,15 @@ spec:
         app.kubernetes.io/version: 1.2.1
       name: ingress-nginx-admission-patch
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app.avikus.ai/tier
+                operator: In
+                values:
+                - web
       containers:
       - args:
         - patch
