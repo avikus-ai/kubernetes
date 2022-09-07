@@ -373,15 +373,6 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: app.avikus.ai/tier
-            operator: In
-            values:
-            - web
   minReadySeconds: 0
   revisionHistoryLimit: 10
   selector:
@@ -396,6 +387,15 @@ spec:
         app.kubernetes.io/instance: ingress-nginx
         app.kubernetes.io/name: ingress-nginx
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app.avikus.ai/tier
+                operator: In
+                values:
+                - web
       hostNetwork: true
       containers:
       - args:
@@ -494,15 +494,6 @@ metadata:
   name: ingress-nginx-admission-create
   namespace: ingress-nginx
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: app.avikus.ai/tier
-            operator: In
-            values:
-            - web
   template:
     metadata:
       labels:
@@ -513,6 +504,15 @@ spec:
         app.kubernetes.io/version: 1.2.1
       name: ingress-nginx-admission-create
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app.avikus.ai/tier
+                operator: In
+                values:
+                - web
       containers:
       - args:
         - create
@@ -550,15 +550,6 @@ metadata:
   name: ingress-nginx-admission-patch
   namespace: ingress-nginx
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: app.avikus.ai/tier
-            operator: In
-            values:
-            - web
   template:
     metadata:
       labels:
@@ -569,6 +560,15 @@ spec:
         app.kubernetes.io/version: 1.2.1
       name: ingress-nginx-admission-patch
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: app.avikus.ai/tier
+                operator: In
+                values:
+                - web 
       containers:
       - args:
         - patch
