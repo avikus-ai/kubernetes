@@ -18,4 +18,4 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 rm -f awscliv2.zip
-rm -f ./aws
+rm -rf ./aws
